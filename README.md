@@ -1,1 +1,1 @@
-# dynamatic-boilerplate-simple
+# Dynamatic Boilerplate Simple
