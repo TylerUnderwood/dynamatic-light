@@ -1,0 +1,20 @@
+:root {
+    --theme-primary: blue;
+    --theme-secondary: navy;
+    --theme-accent: purple;
+    --theme-base: #ffffff;
+    --theme-offset: #f8f8f8;
+    --theme-contrast: #eeeeee;
+    --theme-heading: #080808;
+    --theme-text: #222222;
+    --theme-copy: #333333;
+    --theme-link: blue;
+    --theme-link-hover: navy;
+    --theme-link-active: purple;
+}
+
+:root {
+    --section-wrapper: 32rem;
+    --section-space-y: 5rem;
+    --section-space-x: 2rem;
+}
