@@ -1,0 +1,24 @@
+.bg-img {
+    display: block;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.bg-img::after {
+    display: block;
+    content: '';
+}
+
+.bg-wide::after {
+    padding-top: 56.25%;
+}
+
+.bg-square::after {
+    padding-top: 100%;
+}
+
+.bg-tall::after {
+    padding-top: 144.4444%;
+}

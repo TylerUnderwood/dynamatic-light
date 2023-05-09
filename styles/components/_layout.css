@@ -1,0 +1,50 @@
+@use '../functions/builder' as b;
+
+/*
+|––––––––––––––––––––––––––––––––––––––––––––––––––
+| COMPONENTS: Layout
+|––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+/* === Block === */
+.Block {
+    display: block;
+    width: 100%;
+    flex: 1 0 auto;
+}
+
+/* === Row === */
+.Row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: var(--x-align, flex-start);
+    align-items: var(--y-align, stretch);
+}
+
+/* === Columns === */
+.Col {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: var(--y-align, flex-start);
+    align-items: var(--x-align, stretch);
+}
+
+/* === Align === */
+.Align-t {
+    --x-align: flex-start;
+}
+.Align-r {
+    --y-align: flex-end;
+}
+.Align-b {
+    --x-align: flex-end;
+}
+.Align-l {
+    --y-align: flex-start;
+}
+.Align-x {
+    --x-align: center;
+}
+.Align-y {
+    --y-align: center;
+}

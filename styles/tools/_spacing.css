@@ -1,0 +1,26 @@
+.fill {
+    flex: 1 0 auto;
+}
+
+.filler {
+    display: block;
+    flex: 1 0 auto;
+}
+
+.break {
+    display: block;
+    padding-top: 1em;
+    min-width: 100%;
+}
+
+.space {
+    display: block;
+    padding-left: 1em;
+    min-height: 100%;
+}
+
+.spacer {
+    display: block;
+    padding-top: 1em;
+    padding-left: 1em;
+}

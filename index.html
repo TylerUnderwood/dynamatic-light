@@ -4,30 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./styles/theme/index.css"  rel="stylesheet">
-    <link href="./styles/core/index.css"  rel="stylesheet">
-    <link href="./styles/components/index.css"  rel="stylesheet">
-    <link href="./styles/tools/index.css"  rel="stylesheet">
-    <link href="./styles/utilities/index.css"  rel="stylesheet">
-    <title>Dynamatic Lite</title>
+    <link href="./styles/index.css"  rel="stylesheet">
+    <title>Dynamatic Light</title>
 </head>
 <body>
-    <header class="gutter">
-        <div class="wrapper">
-            <span>LOGO</span>
-        </div>
-    </header>
+    <nav id="top-navbar" class="Row pad">
+        <a id="logo" class="Logo large" href="/">LOGO</a>
+        <div class="filler"></div>
+        <ul class="Nav Matrix Gap">
+            <li class="Nav__item Cell">
+                <a class="Link Meta small" href="./pages/about">About</a>
+            </li>
+            <li class="Nav__item Cell">
+                <a class="Link Meta small" href="./pages/contact">Contact</a>
+            </li>
+            <li class="Nav__item Cell">
+                <a class="Link Meta small" href="./pages/other">Other</a>
+            </li>
+        </ul>
+    </nav>
     <main>
-        <section class="gutter">
+        <header id="banner" class="Banner py-section gutter bg-contrast">
             <div class="wrapper">
-
+                <h1 class="Title">Title of the page</h1>
+            </div>
+        </header>
+        <section id="section-one" class="Section my-section gutter">
+            <div class="wrapper">
+                <h2>Section One</h2>
             </div>
         </section>
     </main>
-    <footer class="gutter">
-        <div class="wrapper">
+    <nav id="bottom-navbar" class="pad">
 
-        </div>
-    </footer>
+    </nav>
 </body>
 </html>

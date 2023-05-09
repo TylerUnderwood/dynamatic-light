@@ -1,0 +1,31 @@
+.bg-base {
+    background-color: var(--theme-base);
+}
+
+.bg-contrast {
+    background-color: var(--theme-contrast);
+}
+
+.bg-primary {
+    background-color: var(--theme-primary);
+}
+
+.text-base {
+    color: var(--theme-base);
+}
+
+.shadow {
+    box-shadow: var(--shadow);
+}
+
+.border {
+    border: var(--border);
+}
+
+.round {
+    border-radius: var(--round);
+}
+
+.pad {
+    padding: 1em;
+}

@@ -1,0 +1,67 @@
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+a:focus-visible {
+    outline: 2px solid var(--theme-link);
+}
+
+.Link {
+    color: var(--theme-link);
+    transition: color 300ms ease-in-out;
+}
+.Link:hover {
+    color: var(--theme-link-hover);
+}
+
+button {
+    display: inline-block;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+button:focus-visible {
+    outline: 2px solid var(--theme-link);
+}
+
+.Button {
+    display: inline-block;
+    flex-shrink: 0;
+    min-width: 6rem;
+    border: 2px solid var(--theme-link);
+    border-radius: var(--round);
+    background-color: var(--theme-link);
+    padding: 0.4rem 0.8rem;
+    letter-spacing: 2px;
+    line-height: 1;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--theme-base);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+    transition-property: border-color, background-color, color;
+    user-select: none;
+    cursor: pointer;
+}
+
+.Button:hover,
+.Button:focus {
+    outline: none;
+    border-color: var(--theme-link-hover);
+    background-color: var(--theme-link-hover);
+}
+
+.Button[disabled] {
+    border-color: var(--theme-link);
+    background-color: var(--theme-link);
+    color: var(--theme-base);
+    opacity: 0.8;
+    cursor: not-allowed;
+}

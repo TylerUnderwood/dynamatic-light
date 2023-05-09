@@ -1,0 +1,56 @@
+p {
+    line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li {
+    margin: 0;
+    padding: 0;
+    list-style: inherit;
+}
+
+code {
+    padding: 0.1em 0.4em;
+    background-color: var(--theme-contrast);
+}
+
+pre {
+    display: block;
+}
+
+.small {
+    font-size: 0.8rem;
+}
+
+.large {
+    font-size: 1.2rem;
+}
+
+.Meta {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.Title {
+    font-size: 1.6rem;
+}
+
+.midline {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.baseline {
+    display: inline-flex;
+    align-items: baseline;
+    vertical-align: baseline;
+}
