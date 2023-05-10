@@ -34,9 +34,118 @@
                 <h2>Section One</h2>
             </div>
         </section>
+        <section id="section-two" class="Section my-section gutter">
+            <div class="wrapper">
+                <h2>Modal</h2>
+                <button class="Button" modal-toggle="demoModal">Open Modal</button>
+                <dialog id="demoModal" class="Modal" modal>
+                    <button class="Modal__backdrop" modal-toggle="demoModal"></button>
+                    <div class="Modal__container">
+                        <button class="Modal__close" modal-toggle="demoModal"></button>
+                        <div class="ModalDefault">
+                            <h3>Hello World</h3>
+                            <p style="margin-bottom: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias harum ipsum cupiditate, soluta similique cumque. Dignissimos aspernatur ut, nam aperiam consequuntur tempora eligendi praesentium expedita alias ratione voluptatem quae vel.</p>
+                            <p style="margin-bottom: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias harum ipsum cupiditate, soluta similique cumque. Dignissimos aspernatur ut, nam aperiam consequuntur tempora eligendi praesentium expedita alias ratione voluptatem quae vel.</p>
+                            <p style="margin-bottom: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias harum ipsum cupiditate, soluta similique cumque. Dignissimos aspernatur ut, nam aperiam consequuntur tempora eligendi praesentium expedita alias ratione voluptatem quae vel.</p>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+        </section>
     </main>
     <nav id="bottom-navbar" class="pad">
 
     </nav>
+    <script>
+ //////////////////////////////
+// Modal
+
+// const modal = ( modalElement ) => {
+//   const id = modalElement.id;
+//   const modal = document.getElementById(elementId);
+
+// }
+
+// function isActive( element ) {
+//   return element.dataset.state === 'active';
+// }
+
+class Modal
+{
+    constructor( elementId ) {
+        this.id = elementId;
+        this.modal = document.getElementById(elementId);
+        this.buttons = document.querySelectorAll(`[modal-toggle="${elementId}"]`);
+        this.init();
+    }
+
+    isActive() {
+        return this.modal.dataset.state === 'active';
+    }
+
+    isAnimating() {
+        return this.modal.dataset.state === 'enter' || this.modal.dataset.state === 'leave';
+    }
+
+    setStateAttribute( state ) {
+        this.modal.dataset.state = state;
+        this.buttons.forEach( (button) => {
+            button.dataset.state = state;
+        })
+    }
+
+    setModalActive() {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.classList.add(this.id + '--active');
+    }
+
+    setModalInactive() {
+        document.documentElement.style.overflow = null;
+        document.body.classList.remove(this.id + '--active');
+    }
+
+    activate() {
+        this.modal.showModal();
+        this.setStateAttribute('enter');
+        this.setModalActive();
+
+        setTimeout( () => {
+            this.setStateAttribute('active');
+        }, 300);
+    }
+
+    deactivate() {
+        this.setStateAttribute('leave');
+
+        setTimeout( () => {
+            this.setStateAttribute('idle');
+            this.setModalInactive();
+            this.modal.close();
+        }, 300);
+    }
+
+    toggle() {
+        if ( this.isAnimating() ) return;
+        !this.isActive() ? this.activate() : this.deactivate();
+    }
+
+    init() {
+        this.buttons.forEach((button) => {
+            button.addEventListener("click", ( event ) => {
+                event.preventDefault();
+                this.toggle();
+            });
+        })
+    }
+}
+
+document.querySelectorAll('[modal]').forEach( element => {
+    if ( !element.id ) {
+        console.log("Modal element needs ID to reference");
+    } else {
+        new Modal( element.id );
+    }
+});
+    </script>
 </body>
 </html>
