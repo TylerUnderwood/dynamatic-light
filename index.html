@@ -37,15 +37,20 @@
         <section id="section-two" class="Section my-section gutter">
             <div class="wrapper">
                 <h2>Modal</h2>
-                <button class="Button" modal-toggle="demoModal">Open Modal</button>
-                <dialog id="demoModal" class="Modal" modal>
-                    <button class="Modal__backdrop" modal-toggle="demoModal"></button>
+                <button
+                    class="Button"
+                    modal-trigger="demoModal"
+                    style="margin-top: 1rem;"
+                >
+                    Open Modal
+                </button>
+
+                <dialog id="demoModal" class="Modal" modal data-duration="300">
+                    <button class="Modal__backdrop" modal-trigger="demoModal"></button>
                     <div class="Modal__container">
-                        <button class="Modal__close" modal-toggle="demoModal"></button>
-                        <div class="ModalDefault">
+                        <button class="Modal__close" modal-trigger="demoModal"></button>
+                        <div class="Card" style="max-width: 320px">
                             <h3>Hello World</h3>
-                            <p style="margin-bottom: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias harum ipsum cupiditate, soluta similique cumque. Dignissimos aspernatur ut, nam aperiam consequuntur tempora eligendi praesentium expedita alias ratione voluptatem quae vel.</p>
-                            <p style="margin-bottom: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias harum ipsum cupiditate, soluta similique cumque. Dignissimos aspernatur ut, nam aperiam consequuntur tempora eligendi praesentium expedita alias ratione voluptatem quae vel.</p>
                             <p style="margin-bottom: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias harum ipsum cupiditate, soluta similique cumque. Dignissimos aspernatur ut, nam aperiam consequuntur tempora eligendi praesentium expedita alias ratione voluptatem quae vel.</p>
                         </div>
                     </div>
@@ -75,8 +80,18 @@ class Modal
     constructor( elementId ) {
         this.id = elementId;
         this.modal = document.getElementById(elementId);
-        this.buttons = document.querySelectorAll(`[modal-toggle="${elementId}"]`);
+        this.buttons = document.querySelectorAll(`[modal-trigger="${elementId}"]`);
+        this.duration = this.modal.dataset.duration ? this.modal.dataset.duration : 300;
         this.init();
+    }
+
+    escClose( event ) {
+        let isKeyPressed = ( event.key === 'Escape' || event.keyCode === '27' );
+
+        if ( !this.isActive() || !isKeyPressed ) { return };
+
+        event.preventDefault();
+        this.open();
     }
 
     isActive() {
@@ -104,38 +119,44 @@ class Modal
         document.body.classList.remove(this.id + '--active');
     }
 
-    activate() {
+    close() {
         this.modal.showModal();
         this.setStateAttribute('enter');
         this.setModalActive();
 
         setTimeout( () => {
             this.setStateAttribute('active');
-        }, 300);
+        }, this.duration);
     }
 
-    deactivate() {
+    open() {
         this.setStateAttribute('leave');
 
         setTimeout( () => {
             this.setStateAttribute('idle');
             this.setModalInactive();
             this.modal.close();
-        }, 300);
+        }, this.duration);
     }
 
     toggle() {
         if ( this.isAnimating() ) return;
-        !this.isActive() ? this.activate() : this.deactivate();
+        !this.isActive() ? this.close() : this.open();
     }
 
     init() {
+        this.setStateAttribute('idle');
+
+        document.addEventListener('keydown', ( event ) => {
+            this.escClose(event)
+        });
+
         this.buttons.forEach((button) => {
-            button.addEventListener("click", ( event ) => {
+            button.addEventListener('click', ( event ) => {
                 event.preventDefault();
                 this.toggle();
             });
-        })
+        });
     }
 }
 

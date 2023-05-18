@@ -3,6 +3,7 @@
     from {
         transform: scale(1.05);
         opacity: 0;
+        filter: blur(8px);
     }
     to {
         transform: none;
@@ -15,22 +16,31 @@
     from {
         transform: scale(1);
         opacity: 1;
+        filter: blur(0);
     }
     to {
         transform: scale(0.95);
         opacity: 0;
-        filter: blur(0);
+        filter: blur(8px);
     }
 }
 
 @keyframes modal_fade_in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes modal_fade_out {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 /* === content === */
@@ -46,10 +56,14 @@ dialog:modal {
     max-height: unset;
 }
 
-.Modal:modal {
+dialog:not([open]) {
+    display: none;
+}
+
+.Modal {
     --modal-time: 300ms;
     --modal-gutter: var(--section-space-x);
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     padding: var(--modal-gutter);
     padding-bottom: 0;
@@ -68,29 +82,20 @@ dialog:modal {
 }
 
 .Modal::backdrop {
-    background-color: rgba(0,0,0,0.5);
-    cursor: pointer;
+    display: none !important;
 }
 
 .Modal__backdrop {
-    position: absolute;
+    position: fixed;
     inset: 0;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
     content: '';
 }
 
 .Modal__container {
     position: relative;
-    display: flex;
     margin: auto;
-    width: 100%;
-    max-width: 320px;
-}
-
-.ModalDefault {
-    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    background-color: white;
-	padding: 1em;
 }
 
 .Modal__close {
@@ -115,7 +120,7 @@ dialog:modal {
     padding: 0;
     line-height: 1;
     font-size: 24px;
-    color: blue;
+    color: var(--theme-primary, blue);
     transition-duration: 300ms;
     transition-timing-function: ease;
     transition-property: border-color, background-color, color;
@@ -128,7 +133,7 @@ dialog:modal {
 }
 .Modal__close:hover,
 .Modal__close:focus {
-    background-color: blue;
+    background-color: var(--theme-primary, blue);
     color: white;
 }
 
